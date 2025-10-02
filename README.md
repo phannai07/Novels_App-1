@@ -20,7 +20,7 @@ The Novels_App solves this problem by giving users a mobile app where they can q
    - Display types of book
 4. Book detail:
    - Title, author, price, cover, pages, discription
-   - Action: Add to Cart button.
+   - Action: Add to cart button.
 5. Shopping cart :
    - button Add/remove books , Update quantity, Show total price.
    - Insert some information (location , phone number)
