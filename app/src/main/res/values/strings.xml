@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Name -->
+    <string name="app_name">My App</string>
+
+    <!-- Profile Screen Text -->
+    <string name="profile_name">Hok Soklay</string>
+    <string name="profile_button">Profile</string>
+    <string name="language_button">Languages</string>
+    <string name="history_button">History</string>
+    <string name="about_button">About Us</string>
+    <string name="logout_button">Logout</string>
+
+    <!-- Profile Screen Labels -->
+    <string name="user_name">User Name</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="name_hint">Name</string>
+
+    <!-- Buttons / Common -->
+    <string name="edit">Edit</string>
+    <string name="back">Back</string>
+
+    <!-- About Us -->
+    <string name="about_us">ABOUT US</string>
+    <string name="discription">Thank you for using my app.</string>
+
+    <!-- Payment -->
+    <string name="payment">Payment</string>
+    <string name="aba">ABA Bank</string>
+    <string name="ac">ACILIDA Bank</string>
+    <string name="t_money">True Money Bank</string>
+    <string name="qr_payment">QR Code</string>
+    <string name="btn_payment">Done</string>
+
+    <!-- Order / History -->
+    <string name="order_history">Order History</string>
+    <string name="no_orders">No orders yet</string>
+    <string name="order_summary">Your Order Summary</string>
+    <string name="total">Total</string>
+    <string name="pay_now">Pay Now</string>
+
+    <!-- Accessibility -->
+    <string name="desc_user_image">User profile picture</string>
+    <string name="desc_back_arrow">Go back</string>
+    <string name="desc_arrow_right">Navigate to next page</string>
+
+    <!-- Search / Shop -->
+    <string name="search_books">Search books...</string>
+    <string name="cart">Cart</string>
+
+    <!-- Categories -->
+    <string name="category_horror">Horror</string>
+    <string name="category_romance">Romance</string>
+    <string name="category_fantasy">Fantasy</string>
+
+    <!-- Section titles -->
+    <string name="all_books">All Books</string>
+
+    <!-- Checkout / Shipping -->
+    <string name="checkout_header">Checkout</string>
+    <string name="back_arrow">←</string>
+    <string name="shipping_details">SHIPPING DETAILS</string>
+    <string name="full_name">Full Name</string>
+    <string name="address"></string>
+    <string name="delivery_option_delivery">Delivery</string>
+    <string name="delivery_option_pickup">Pick-up</string>
+    <string name="books_in_cart">Books in Cart</string>
+    <string name="items_count">Items: %1$d</string>
+    <string name="payment_total">$%1$.2f</string>
+    <string name="complete_order">Complete Order</string>
+
+</resources>

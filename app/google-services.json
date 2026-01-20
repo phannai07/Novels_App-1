@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "898427825224",
+    "project_id": "novels-register-login",
+    "storage_bucket": "novels-register-login.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898427825224:android:b7dc420cf4c4ebf6a07c7d",
+        "android_client_info": {
+          "package_name": "com.cscorner.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD955znLska-fSPbzWZ1vow6Wgl6bCH7ak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
