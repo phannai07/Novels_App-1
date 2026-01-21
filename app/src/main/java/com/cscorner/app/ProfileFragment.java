@@ -8,9 +8,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,18 +20,20 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class ProfileFragment extends Fragment {
 
     private TextView tvUsername, tvEmail;
-    private Button btnLogout, btnOrderHistory, btnChangeMode;
+    private AppCompatButton btnLogout, btnOrderHistory, btnLocation;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_profile_fragment, container, false);
 
+        // Bind views
         tvUsername = view.findViewById(R.id.tvUsername);
         tvEmail = view.findViewById(R.id.tvEmail);
         btnLogout = view.findViewById(R.id.btnLogout);
         btnOrderHistory = view.findViewById(R.id.btnOrderHistory);
-        btnChangeMode = view.findViewById(R.id.btnChangeMode);
+        btnLocation = view.findViewById(R.id.btnLocation);
 
+        // Firebase
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -54,24 +57,19 @@ public class ProfileFragment extends Fragment {
                 transaction.commit();
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(getActivity(), "Navigation Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),
+                        "Navigation Error: " + e.getMessage(),
+                        Toast.LENGTH_LONG).show();
             }
         });
 
-        // 🔹 Change Mode → Open Google Maps (RUPP)
-        btnChangeMode.setOnClickListener(v -> {
-            Uri uri = Uri.parse("geo:0,0?q=Royal+University+of+Phnom+Penh");
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, uri);
-            mapIntent.setPackage("com.google.android.apps.maps");
-
-            if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-                startActivity(mapIntent);
-            } else {
-                startActivity(new Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("https://www.google.com/maps/search/?api=1&query=Royal+University+of+Phnom+Penh")
-                ));
-            }
+        // 📍 Location → Google Maps (RUPP - your link)
+        btnLocation.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://maps.app.goo.gl/qrGA7VBeSpCyJ7He8")
+            );
+            startActivity(intent);
         });
 
         // Logout
