@@ -3,6 +3,7 @@ package com.cscorner.app;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class ProfileFragment extends Fragment {
 
     private TextView tvUsername, tvEmail;
-    private Button btnLogout, btnOrderHistory;
+    private Button btnLogout, btnOrderHistory, btnChangeMode;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class ProfileFragment extends Fragment {
         tvEmail = view.findViewById(R.id.tvEmail);
         btnLogout = view.findViewById(R.id.btnLogout);
         btnOrderHistory = view.findViewById(R.id.btnOrderHistory);
+        btnChangeMode = view.findViewById(R.id.btnChangeMode);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -42,10 +44,10 @@ public class ProfileFragment extends Fragment {
                     });
         }
 
+        // Order History
         btnOrderHistory.setOnClickListener(v -> {
             try {
                 HistoryFragment historyFragment = new HistoryFragment();
-                // ✅ FIX: use getFragmentManager() instead of getParentFragmentManager()
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container, historyFragment);
                 transaction.addToBackStack(null);
@@ -56,10 +58,26 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        // 🔹 Change Mode → Open Google Maps (RUPP)
+        btnChangeMode.setOnClickListener(v -> {
+            Uri uri = Uri.parse("geo:0,0?q=Royal+University+of+Phnom+Penh");
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, uri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+
+            if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                startActivity(mapIntent);
+            } else {
+                startActivity(new Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://www.google.com/maps/search/?api=1&query=Royal+University+of+Phnom+Penh")
+                ));
+            }
+        });
+
+        // Logout
         btnLogout.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(getActivity(), LoginActivity.class));
-            // ✅ FIX: use getActivity() instead of requireActivity()
             getActivity().finish();
         });
 
